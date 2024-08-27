@@ -16,11 +16,14 @@ def filtrar_estudantes(pessoas, target=True):
     """
     # Comece a implementação aqui
 
-    return [
-        {"nome": pessoa["nome"], "idade": pessoa["idade"]}
-        for pessoa in pessoas
-        if pessoa["estudante"] == target
-    ]
+    resultado = []
+    for pessoa in pessoas:
+        if pessoa.get("estudante") == target:
+            resultado.append({"nome": pessoa["nome"], "idade": pessoa["idade"]})
+        elif "estudante" not in pessoa and not target:
+            resultado.append({"nome": pessoa["nome"], "idade": pessoa["idade"]})
+
+    return resultado
 
 
 # Questão 2: Calcular média de idade dos estudantes
